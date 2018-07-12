@@ -1,0 +1,79 @@
+<mvc:View controllerName="sap.ui.iterface_monitor.controller.InterfacesList" xmlns="sap.m" xmlns:core="sap.ui.core"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:mvc="sap.ui.core.mvc">
+	<Table headerText="{ path:'view>/countIterface', formatter: '.formatter.countIterfaces'}" id="interfacesList" growing="true"
+		growingThreshold="10" class="sapUiResponsiveMargin" width="auto" items="{ path : 'globalModel>/executions' }">
+		<columns>
+			<Column >
+				<Text text="{i18n>columnInterface}"/>
+			</Column>
+			<Column >
+				<Text text="{i18n>columnInterfaceTextDescription}"/>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<Text text="{i18n>columnCode}"/>
+			</Column>
+			<Column >
+				<Text text="{i18n>columnExecutionDate}"/>
+			</Column>
+			<Column >
+				<Text text="{i18n>columnExecutionTime}"/>
+			</Column>
+			<Column >
+				<Text text="{i18n>columnSourceSystem}"/>
+			</Column>
+			<Column >
+				<Text text="{i18n>columnTargetSystem}"/>
+			</Column>
+			<Column>
+				<Text text="{i18n>columnFrequency}"/>
+			</Column>
+			<!--<Column app:dependent on type interface="I">-->
+			<!--	<Text text="{= ${globalView>/filterParams/selectedInterface} === 'I' ? ${i18n>columnFileMoving} : ${i18n>columnExtraction}}"/>-->
+			<!--</Column>-->
+			<!--visible="{= ${globalView>/filterParams/selectedInterface} === 'I'-->
+			<Column app:forTypeiterface="I">
+				<Text text="{i18n>columnFileMoving}"/>
+			</Column>
+			<Column app:forTypeiterface="O">
+				<Text text="{{i18n>columnExtraction}"/>
+			</Column>
+			<Column app:forTypeiterface="I">
+				<Text text="{i18n>columnStagingArea}"/>
+			</Column>
+			<Column app:forTypeiterface="I">
+				<Text text="{i18n>columnConversion}"/>
+			</Column>
+			<Column app:forTypeiterface="I">
+				<Text text="{i18n>columnFAMupload}"/>
+			</Column>
+			<Column >
+				<Text text="{i18n>columnNextExecution}"/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<Text text="{ path: 'globalModel>Intid' }"/>
+					<Text text="{ path: 'globalModel>Inttx' }"/>
+					<Text text="{ path: 'globalModel>Intcd' }"/>
+					<Text text="{ path: 'globalModel>Exdat', formatter:'.formatter.date' }" wrapping="false"/>
+					<Text text="{ path: 'globalModel>Extim', formatter:'.formatter.time' }"/>
+					<Text text="{ path: 'globalModel>Syssr' }"/>
+					<Text text="{ path: 'globalModel>Systr' }"/>
+					<Text text="{ path: 'globalModel>Frqnc', formatter:'.formatter.frequency'}"/>
+					<core:Icon app:exha="{globalModel>Exha1}" alt="{globalModel>Stat1}" press="handlePopoverPress"
+						src="{path:'globalModel>Stat1', formatter:'.formatter.statusIcon'}" color="{path:'globalModel>Stat1', formatter:'.formatter.statusIconColor'}"/>
+					<core:Icon app:exha="{globalModel>Exha1}" alt="{globalModel>Stat1}" press="handlePopoverPress"
+						src="{path:'globalModel>Stat1', formatter:'.formatter.statusIcon'}" color="{path:'globalModel>Stat1', formatter:'.formatter.statusIconColor'}"/>
+					<core:Icon app:exha="{globalModel>Exha2}" alt="{globalModel>Stat2}" press="handlePopoverPress"
+						src="{path:'globalModel>Stat2', formatter:'.formatter.statusIcon'}" color="{path:'globalModel>Stat2', formatter:'.formatter.statusIconColor'}"/>
+					<core:Icon app:exha="{globalModel>Exha3}" alt="{globalModel>Stat3}" press="handlePopoverPress"
+						src="{path:'globalModel>Stat3', formatter:'.formatter.statusIcon'}" color="{path:'globalModel>Stat3', formatter:'.formatter.statusIconColor'}"/>
+					<core:Icon app:exha="{globalModel>Exha4}" alt="{globalModel>Stat4}" press="handlePopoverPress"
+						src="{path:'globalModel>Stat4', formatter:'.formatter.statusIcon'}" color="{path:'globalModel>Stat4', formatter:'.formatter.statusIconColor'}"/>
+					<core:Icon press="handleNextExecutionPress" src="sap-icon://restart" color="#6f92c6"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</mvc:View>

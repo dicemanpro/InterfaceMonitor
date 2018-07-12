@@ -1,0 +1,79 @@
+<mvc:View controllerName="sap.ui.iterface_monitor.controller.FilterBar" xmlns:mvc="sap.ui.core.mvc" xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns="sap.m">
+	<l:VerticalLayout width="100%">
+		<fb:FilterBar reset="onReset" search="onSearch" showRestoreButton="true" showClearButton="true">
+			<fb:filterItems>
+				<fb:FilterItem name="A" label="Interface type" labelTooltip="Tooltip Example">
+					<fb:control>
+						<ComboBox selectedKey="{globalView>/filterParams/selectedInterface}">
+							<items>
+								<core:Item key="I" text="Inbound"/>
+								<core:Item key="O" text="Outbound"/>
+							</items>
+						</ComboBox>
+					</fb:control>
+				</fb:FilterItem>
+				<fb:FilterItem name="B" label="Interface identifire" labelTooltip="Tooltip Example">
+					<fb:control>
+						<MultiComboBox id="interfacesIdBox" selectedKeys="{globalView>/filterParams/aItemsIds}" items="{ path : 'globalModel>/interfaceSet' }">
+							<core:Item key="{globalModel>Intid}" text="{globalModel>Intid}"/>
+						</MultiComboBox>
+					</fb:control>
+				</fb:FilterItem>
+				<fb:FilterItem name="c" label="Interface text description" labelTooltip="Tooltip Example">
+					<fb:control>
+						<Input id="InterfaceTextDescription" type="Text" value="{globalView>/filterParams/descriptionIterface}" placeholder="Enter text description ..."
+							showSuggestion="true" suggestionItems="{/Inttx}">
+							<suggestionItems>
+								<core:Item text="{globalModel>Inttx}"/>
+							</suggestionItems>
+						</Input>
+					</fb:control>
+				</fb:FilterItem>
+				<fb:FilterItem name="D" label="{= ${globalView>/filterParams/selectedInterface} === 'I' ? 'Interface source system' : 'Interface target system'}" labelTooltip="Tooltip Example">
+					<fb:control>
+						<MultiComboBox id="interfaceSourceSystemBox" selectedKeys="{globalView>/filterParams/aItemsTypeSystem}" items="{ path : 'globalModel>/systemSet' }">
+							<core:Item key="{globalModel>Systm}" text="{globalModel>Systm}"/>
+						</MultiComboBox>
+					</fb:control>
+				</fb:FilterItem>
+				<fb:FilterItem name="E" label="Execution start">
+					<fb:control>
+						<DatePicker id="executionStartDate" dateValue="{globalView>/filterParams/startDate}" valueFormat="yyyy.MM.dd" displayFormat="yyyy-MM-dd"
+							class="sapUiSmallMarginBottom"/>
+					</fb:control>
+				</fb:FilterItem>
+				<fb:FilterItem name="F" label="Execution end">
+					<fb:control>
+						<DatePicker id="executionEndDate" dateValue="{globalView>/filterParams/endDate}" valueFormat="yyyy.MM.dd" displayFormat="yyyy-MM-dd"
+							class="sapUiSmallMarginBottom"/>
+					</fb:control>
+				</fb:FilterItem>
+				<fb:FilterItem name="G" label="Execution start">
+					<fb:control>
+						<TimePicker id="TP1" dateValue="{globalView>/filterParams/startTime}" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange"
+							placeholder="Enter meeting start time"/>
+					</fb:control>
+				</fb:FilterItem>
+				<fb:FilterItem name="H" label="Execution end">
+					<fb:control>
+						<TimePicker id="TP2" dateValue="{globalView>/filterParams/endTime}" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange"
+							placeholder="Enter meeting start time"/>
+					</fb:control>
+				</fb:FilterItem>
+				<fb:FilterItem name="I" label="Execution state" labelTooltip="Tooltip Example">
+					<fb:control>
+						<MultiComboBox id="executionState" selectedKeys="{globalView>/filterParams/aItemsStates}">
+							<items>
+								<core:Item key="N" text="Not Executed"/>
+								<core:Item key="W" text="Expired"/>
+								<core:Item key="S" text="Success"/>
+								<core:Item key="E" text="Eror"/>
+							</items>
+						</MultiComboBox>
+					</fb:control>
+				</fb:FilterItem>
+			</fb:filterItems>
+		</fb:FilterBar>
+	</l:VerticalLayout>
+</mvc:View>

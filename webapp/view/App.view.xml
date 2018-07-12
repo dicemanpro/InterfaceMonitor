@@ -1,0 +1,16 @@
+<mvc:View
+   controllerName="sap.ui.iterface_monitor.controller.App"
+   xmlns="sap.m"
+   xmlns:mvc="sap.ui.core.mvc"
+   displayBlock="true" >
+	<App id="app">
+      <pages>
+         <Page title="Interfaces">
+            <content>
+               <mvc:XMLView viewName="sap.ui.iterface_monitor.view.FilterBar"/>
+               <mvc:XMLView viewName="sap.ui.iterface_monitor.view.InterfacesList"/>
+            </content>
+         </Page>
+      </pages>
+	</App>
+</mvc:View>
